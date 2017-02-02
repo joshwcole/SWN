@@ -1,6 +1,7 @@
 module.exports = {
   d: d,
-  generateWorld: generateWorld
+  generateWorld: generateWorld,
+  generateSystem: generateSystem
 }
 
 function d(val) {
@@ -56,4 +57,13 @@ function generateWorld () {
   console.log("Tech:  " + determineTechLevel());
   console.log("Tag 1: " + determineWorldTags());
   console.log("Tag 2: " + determineWorldTags());
+}
+
+function generateSystem() {
+  var totalPlanets = d(3);
+  console.log(totalPlanets + " planets in the system.");
+  for (var i=0; i<totalPlanets; i++){
+    console.log("\nPLANET " + i + ":");
+    console.log(generateWorld());
+  };
 }
