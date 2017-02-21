@@ -19,7 +19,5 @@ At present, if you would like to use these methods, you will need to run `node` 
 
 **adventure()** will just return an adventure seed.
 
-* Generate d(x) worlds
-* Generate NPC name
+##Ongoing
 * Generate NPC
-* Generate random encounter
