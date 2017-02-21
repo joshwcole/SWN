@@ -2,7 +2,7 @@ const constants = require('./constants.js')
 const core = require('./core.js')
 
 module.exports = {
-  generateSystem: generateSystem,
+  generateSector: generateSector,
   generateWorld: generateWorld,
   name: name,
   place: place,
@@ -48,7 +48,7 @@ function generateWorld() {
   console.log("Tag 2: " + determineWorldTags());
 }
 
-function generateSystem() {
+function generateSector() {
   var totalPlanets = core.d(3);
   console.log(totalPlanets + " planets in the system.");
   for (var i=0; i<totalPlanets; i++){
