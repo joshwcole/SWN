@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>SWN</title>
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" />-->
+  <link rel="stylesheet" type="text/css" href="./semantic.min.css">
+</head>
+
+<body>
+  <div class="ui grid">
+    <div class="fourteen wide column">
+      <h2><center>Josh's Super Cool 'Stars Without Number' Page</center></h2>
+    </div>
+  </div>
+  <div class="ui grid">
+    <!--Blank column-->
+    <div class="one wide column"></div>
+    <!--Generate Stuff-->
+    <div class="four wide column">
+      <div style="text-align:center">
+        <div class="ui centered raised fluid card">
+          <div class="content">
+            <a class="header">
+              <h3>Generating Places and People</h3>
+            </a>
+            <div class="description">
+              Nationality:
+              <select id="nationalityInput">
+                           <option value="arb">Arabic</option>
+                           <option value="chi">Chinese</option>
+                           <option value="eng">English</option>
+                           <option value="ind">Indian</option>
+                           <option value="jap">Japanese</option>
+                           <option value="nig">Nigerian</option>
+                           <option value="rus">Russian</option>
+                           <option value="spa">Spanish</option>
+                        </select>
+              <br>Gender:
+              <input type="radio" name="gender" value="m"> Male
+              <input type="radio" name="gender" value="f"> Female
+              <input type="radio" name="gender" value=""> Random<br>
+              <br>
+              <table>
+                <col width="300px" />
+                <col width="300px" />
+                <tr>
+                  <th>
+                    <button id="genPlace">Make Place</button>
+                  </th>
+                  <th>
+                    <button id="genName">Make Name</button>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="placeoutput" style="text-align:center"><span style="color:lightgrey">Place goes here</span></p>
+                  </td>
+                  <td>
+                    <p id="nameoutput"><span style="color:lightgrey">Name goes here</span></p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="ui centered raised fluid card">
+          <div class="content">
+            <div class="header">
+              <h3>Generating NPCs and Planets</h3>
+            </div>
+            <div class="description">
+              <table id="makeComplex">
+                <col width="300px" />
+                <col width="300px" />
+                <tr>
+                  <th>
+                    <button id="genNPC" data-function="generateNPC">Make NPC</button>
+                  </th>
+                  <th>
+                    <button id="makeWorld" data-function="generateWorld">Make World</button>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="npcoutput" style="text-align:left"><span style="color:lightgrey"><b>Gender</b>:<br><b>Age</b>:<br><b>Height</b>:<br><b>Problem</b>:<br><b>Motive</b>:<br><b>Quirk</b><br></span></p>
+                  </td>
+                  <td>
+                    <p id="output" style="text-align:left"><span style="color:lightgrey"><b>Cult:</b><br><b>Atmos:</b><br><b>Temp:</b><br><b>Bios:</b><br><b>Pop:</b><br><b>Tech:</b><br><b>Tag 1:</b><br><b>Tag 2:</b></span></p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Rules-->
+    <div class="four wide column">
+      <div class="ui centered raised fluid card">
+        <div class="ui styled accordion">
+          <div class="title">
+            <i class="dropdown icon"></i> Attacking
+          </div>
+          <div class="content">
+            <p class="transition hidden">Each round is <b>6 seconds long</b>.<br><br> To attack, roll <b>to hit</b>: <b>roll 1d20</b> + the <b>attribute modifier</b> for the weapon + the target's <b>armour class</b> + <b>shooter's attack bonus</b> for their level + <b>weapon modifiers</b><br><br>              Disengaging from close combat without taking an action to do so gives an <b>attack of opportunity</b></p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Combat
+          </div>
+          <div class="content">
+            <p class="transition hidden">Character can <b>act</b> and <b>move</b> up to 20m. Actions include making attacks, reloading, operating devices or moving an additional 20m. Free actions can be done whenever.<br><br> Characters may <b>delay actions</b> to respond to event.
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Encumbrance
+          </div>
+          <div class="content">
+            <p class="transition hidden">May have number of items <b>ready</b> equal to half STR score, which can be drawn as part of action. Can have number of <b>stowed</b> items equal to their STR score which takes a round to ready. 100 credits, 6 Type-A batteries or 3 magazines
+              take up one slot.
+              <br><br> 2 additional items, can be added but they become Lightly Encumbered: can move 15m, which can be doubled again to 10m movement.
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Extended Skill Checks
+          </div>
+          <div class="content">
+            <p class="transition hidden">Make several skill checks until they get a certain number of successes.</p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Hazards
+          </div>
+          <div class="content">
+            <p class="transition hidden"><b>Hard Vacuum</b> - first round takes no damage, then takes 1d20 each round with Physical Effect save for half.<br><br> <b>Falling</b> - 1d6 damage per 3 meters. Luck saving throw saves half.<br><br> <b>Radiation</b> - On failed Physical
+              Effects save, a day later character loses 1 point of Constitution from effects which can only be cured at TL4 medical facility for 48 hours. Medkits won't work.<br><br> <b>Suffocation</b> - characters can go without air for (4 + CONS modifier)
+              minutes of air, which is halved for something strenuous. Afterwards, they make Physical Effects save or lose consciousness.
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Healing
+          </div>
+          <div class="content">
+            <p class="transition hidden">When a character is reduced to 0 hit points or less, they fall <b>unconscious</b>, losing 1 HP until they reach -10, when they <b>die.</b><br><br> A character can be <b>stabilised</b> with a Lazarus Patch or a Biopsionics psychic.<br><br>              After being stabilised Biopscionics can revive them. Otherwise, they require <b>1d4 days of treatment</b> before they gain 1 HP and heal normally. With TL3 it's 1d4 months which is the same for TL2, but they must make Physical Effects save
+              with attending medic's Tech/Medical skill, a failure cancels the process.<br><br> Every day, a character gains HP equal to his level when he wakes up. He gains that again if he relaxes for the whole day, with two more for every level of
+              Tech/Medical possessed by the attending physician.
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Movement
+          </div>
+          <div class="content">
+            <p class="transition hidden">If a character moves away from an enemy without disengaging as their action they get an attack of opportunity.<br><br> Can move 20m, up to 40m if they give up their action.
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Saving Throws
+          </div>
+          <div class="content">
+            <p class="transition hidden">Physical Effect - resist diseases or poisons<br><br> Mental Effect - psionic powers or mind alterations<br><br> Evasion - things that can be jumped away from<br><br> Tech - alien beam weapons, nanite infections etc<br><br> Luck - dumb luck
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Space Ship Combat
+          </div>
+          <div class="content">
+            <p class="transition hidden">Pilots add their ship's SPE to any Vehicle/Space tests. Armour is subtracted from incoming damage. If ship is taken to 0 HP for non-fighters, chief engineer makes Tech/Astronautics at Diff8, success means a helpless husk with no functioning
+              systems; failure means explodes in 3d6 rounds.<br><br> To hit, roll 1d20 + Gunner's AB + Combat/Gunnery skill + Attribute Modifier + target's Armour. If greater than 20, it's a hit!
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Space Ship Maintanence and Repair
+          </div>
+          <div class="content">
+            <p class="transition hidden">At least 100 credits a day per crew for payroll.<br><br> Must be refuelled after each drill with Hydrogen. Costs 200 credits per drive rating and takes 6 hours.<br><br> Maintenance costs 5% of the hull's base price each year (2,083creds a
+              month for The Noble Reproach). After a year, they get -1 to all tests. Once the debt is half the ship's base, it can't fly.<br><br> It costs 1,000 crews per HP to heal The Noble Reproach.
+            </p>
+          </div>
+          <div class="title">
+            <i class="dropdown icon"></i> Space Ship Travel
+          </div>
+          <div class="content">
+            <p class="transition hidden">From planet to moon is 6 hours, from one region to another is 48. This is divided by the Spike level of the drive.<br><br> Each jump takes an hour of prep per hex, and can be made up to 1 hex for each Spike level, and takes 6 days divided
+              by Spike Level.<br><br> Jumping between stars requires Navigation(1) on Intelligence against diff 7. This is increased by the following factors:<br><br> Uncharted course +4<br><br> Charts older than 5 years +2<br><br> Charts between 1 and
+              5 years old +1<br><br> Jump, per two full hexes +1<br><br> Course Trimming per level +1<br><br> Course Trimming is being more daring, adding one difficulty per level allowing for an increase in Spike level. Can't increase more than Navigation
+              rating.
+            </p>
+          </div>
+        </div>
+        <script src="./jquery-3.2.1.min.js"></script>
+        <script src="./semantic.js"></script>
+        <script language='javascript'>
+          $(document).ready(function() {
+            $('.ui.accordion').accordion();
+          });
+        </script>
+        <!--d(<input id="rollDInput"></input>)<button id="rollDButton">Roll!</button>
+               <p id="diceoutput"><span style="color:lightgrey">result</span></p>-->
+      </div>
+    </div>
+    <!--Characters and Timers-->
+    <div class="four wide column">
+      <div class="ui centered raised fluid card">
+        <div class="content">
+          <div class="header" style="text-align:center">
+            <h3>Timer</h3>
+            <p id="timerOutput"><span style="color:lightgrey">00:00:00</span></p>
+            <button id="starttimer">Start</button>
+            <button id="stoptimer">Reset</button>
+          </div>
+        </div>
+      </div>
+      <div class="ui centered raised fluid card">
+        <div class="ui styled accordion">
+          <div class="title">
+            <i class="dropdown icon"></i> <b>Alistair Rhoids</b>
+          </div>
+          <div class="content">
+            <p class="transition hidden">
+              <p style="text-align:center"><br><b>Attributes:</b> CHA + 1</p>
+              <table>
+                <col width="200px" />
+                <col width="200px" />
+                <tr>
+                  <td>
+                    <p style="text-align:center">Business 0<br>Combat/Proj Weapons 0<br>Culture/Spacer 0<br>Culture/Wheatstone 0<br>Exosuit 0<br>Tech/Astronautics 0</p>
+                  </td>
+                  <td>
+                    <p style="text-align:center">Tech/Postech 0<br>Vehicle/Land 0<br>Combat/Gunnery 1<br>Navigation 1<br>Vehicle/Spacer 1</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="text-align:center"><br><b>Languages:</b> English 1</p>
+              <table>
+                <col width="120px" />
+                <col width="50px" />
+                <col width="50px" />
+                <col width="50px" />
+                <col width="50px" />
+                <tr style="text-align:center">
+                  <th style="text-align:left">Weapon</th>
+                  <th>Dmg</th>
+                  <th>Rng</th>
+                  <th>Mag</th>
+                  <th>Atr</th>
+                </tr>
+                <tr style="text-align:center">
+                  <td style="text-align:left">
+                    <p>Revolver</p>
+                  </td>
+                  <td>
+                    <p>1d8</p>
+                  </td>
+                  <td>
+                    <p>30/100</p>
+                  </td>
+                  <td>
+                    <p>12?</p>
+                  </td>
+                  <td>
+                    <p>Dex</p>
+                  </td>
+                </tr>
+                <tr style="text-align:center">
+                  <td style="text-align:left">
+                    <p>Shotgun</p>
+                  </td>
+                  <td>
+                    <p>3d4</p>
+                  </td>
+                  <td>
+                    <p>10/30</p>
+                  </td>
+                  <td>
+                    <p>2</p>
+                  </td>
+                  <td>
+                    <p>Dex</p>
+                  </td>
+                </tr>
+              </table>
+            </p>
+          </div>
+
+          <div class="title">
+            <i class="dropdown icon"></i> <b>Diego Galaxia</b>
+          </div>
+          <div class="content">
+            <p class="transition hidden">
+              <p style="text-align:center"><br><b>Attributes:</b> DEX + 1 INT + 1 CHA - 1</p>
+              <table>
+                <col width="200px" />
+                <col width="200px" />
+                <tr>
+                  <td>
+                    <p style="text-align:center">Athletics 0<br>Combat/Proj Weapons 0<br>Culture/Spacer 0<br>Culture/Yuki 0<br>Navigation 0<br>Perception 0</p>
+                  </td>
+                  <td>
+                    <p style="text-align:center">Persuade 0<br>Security 1<br>Survival 0<br>Tech/Postech 1<br>Vehicle/Air 0</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="text-align:center"><br><b>Languages:</b> English, Japanese, Spanish</p>
+              <table>
+                <col width="100px" />
+                <col width="60px" />
+                <col width="60px" />
+                <col width="60px" />
+                <col width="60px" />
+                <tr style="text-align:center">
+                  <th style="text-align:left">Weapon</th>
+                  <th>Dmg</th>
+                  <th>Rng</th>
+                  <th>Mag</th>
+                  <th>Atr</th>
+                </tr>
+                <tr style="text-align:center">
+                  <td style="text-align:left">
+                    <p>Rifle</p>
+                  </td>
+                  <td>
+                    <p>1d10+2</p>
+                  </td>
+                  <td>
+                    <p>200/400</p>
+                  </td>
+                  <td>
+                    <p>6</p>
+                  </td>
+                  <td>
+                    <p>Dex</p>
+                  </td>
+                </tr>
+              </table>
+            </p>
+          </div>
+
+          <div class="title">
+            <i class="dropdown icon"></i> <b>Hector Grigori</b>
+          </div>
+          <div class="content">
+            <p class="transition hidden">
+              <p style="text-align:center"><br><b>Attributes:</b> DEX + 1</p>
+              <table>
+                <col width="200px" />
+                <col width="200px" />
+                <tr>
+                  <td>
+                    <p style="text-align:center">Athletics 0<br>Combat/Prim Weapons 0<br>Combat/Proj Weapons 0<br>Culture/Criminal 0<br>Culture/Vologda 1<br>Leadership 0</p>
+                  </td>
+                  <td>
+                    <p style="text-align:center">Persuade 0<br>Religion 0<br>Security 0<br>Stealth 0<br>Tactics 0</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="text-align:center"><br><b>Languages:</b> English, Russian</p>
+              <table>
+                <col width="120px" />
+                <col width="50px" />
+                <col width="50px" />
+                <col width="50px" />
+                <col width="50px" />
+                <tr style="text-align:center">
+                  <th style="text-align:left">Weapon</th>
+                  <th>Dmg</th>
+                  <th>Rng</th>
+                  <th>Mag</th>
+                  <th>Atr</th>
+                </tr>
+                <tr style="text-align:center">
+                  <td style="text-align:left">
+                    <p>Revolver</p>
+                  </td>
+                  <td>
+                    <p>1d8</p>
+                  </td>
+                  <td>
+                    <p>30/100</p>
+                  </td>
+                  <td>
+                    <p>12</p>
+                  </td>
+                  <td>
+                    <p>Dex</p>
+                  </td>
+                </tr>
+                <tr style="text-align:center">
+                  <td style="text-align:left">
+                    <p>Semi-Auto P.</p>
+                  </td>
+                  <td>
+                    <p>1d6+1</p>
+                  </td>
+                  <td>
+                    <p>30/100</p>
+                  </td>
+                  <td>
+                    <p>24</p>
+                  </td>
+                  <td>
+                    <p>Dex</p>
+                  </td>
+                </tr>
+              </table>
+            </p>
+          </div>
+
+          <div class="title">
+            <i class="dropdown icon"></i> <b>Karl69</b>
+          </div>
+          <div class="content">
+            <p class="transition hidden">
+              <p style="text-align:center"><br><b>Attributes:</b> INT + 1 DEX -1</p>
+              <table>
+                <col width="200px" />
+                <col width="200px" />
+                <tr>
+                  <td>
+                    <p style="text-align:center">Business 0<br>Combat/Prim Weap 0<br>Computer 1<br>Culture/Criminal 0<br>Culture/Nakisa 0<br>Exosuit 0<br>Gambling 0</p>
+                  </td>
+                  <td>
+                    <p style="text-align:center">Perception 0<br>Persuade 0<br>Security 0<br>Stealth 0<br>Tech/Astronautics 0<br>Tech/Postech 0</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="text-align:center"><br><b>Languages:</b> English, Russian, Japanese</p>
+              <table>
+                <col width="120px" />
+                <col width="50px" />
+                <col width="50px" />
+                <col width="50px" />
+                <col width="50px" />
+                <tr style="text-align:center">
+                  <th style="text-align:left">Weapon</th>
+                  <th>Dmg</th>
+                  <th>Rng</th>
+                  <th>Mag</th>
+                  <th>Atr</th>
+                </tr>
+                <tr style="text-align:center">
+                  <td style="text-align:left">
+                    <p>Semi-Auto P.</p>
+                  </td>
+                  <td>
+                    <p>1d6+1</p>
+                  </td>
+                  <td>
+                    <p>30/100</p>
+                  </td>
+                  <td>
+                    <p>24</p>
+                  </td>
+                  <td>
+                    <p>Dex</p>
+                  </td>
+                </tr>
+                <tr style="text-align:center">
+                  <td style="text-align:left">
+                    <p>Knife</p>
+                  </td>
+                  <td>
+                    <p>1d4</p>
+                  </td>
+                  <td>
+                    <p>6/9</p>
+                  </td>
+                  <td>
+                    <p>-</p>
+                  </td>
+                  <td>
+                    <p>Str/Dex</p>
+                  </td>
+                </tr>
+              </table>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="one wide column"></div>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
+<!-- onclick="button.addEventListener('click', d(6), false) -->

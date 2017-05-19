@@ -1,6 +1,6 @@
 module.exports = {
   atmosphere:    ["Corrosive", "Inert gas", "Airless", "Breathable", "Breathable", "Breathable", "Breathable", "Breathable", "Thick atmosphere", "Toxic", "Corrosive and invasive"],
-  temperature:   ["Frozen", "Cold", "Chill", "Chill", "Temperate", "Temperate", "Temperate", "Warmish", "Warmish", "Warm", "Burning"],
+  temperature:   ["Frozen", "Cold", "Chill", "Chill", "Temperate", "Temperate", "Temperate", "Temperate", "Warmish", "Warmish", "Warm", "Burning"],
   biosphere:     ["Biosphere remnants", "Microbal Bio", "No Bio", "No Bio", "Human-micible bio", "Human-micible bio", "Human-micible bio", "Immicible bio", "Immicible bio", "Hybrid bio", "Engineered Bio"],
   population:    ["Failed colony", "Outpost", "Tens of Thousands", "Tens of Thousands", "Hundreds of Thousands", "Hundreds of Thousands", "Hundreds of Thousands", "Millions", "Millions", "Billions", "Aliens"],
   techLevel:     ["TL 0", "TL 1", "TL 2", "TL 3", "TL 3", "TL 4", "TL 4", "TL 4", "TL 4", "TL 4 with pre-tech or specialities", "TL 5"],
@@ -12,6 +12,7 @@ module.exports = {
                   ["Secret Masters", "Theocracy", "Tomb World", "Trade Hub", "Tyranny", "Unbraked AI", "Warlords", "Xenophiles", "Xenophobes", "Zombies"]
                  ],
   cultures:      ["Arabic", "Chinese", "English", "Indian", "Japanese", "Nigerian", "Russian", "Spanish"],
+  shortCultures: ["arb", "chi", "eng", "ind", "jap", "nig", "rus", "spa"],
   arabicNames:   [["Aamir", "Aisha", "Abdel"],
                   ["Ayub", "Alimah", "Awad"],
                   ["Binyamin", "Badia", "Dahhak"],
@@ -328,5 +329,10 @@ module.exports = {
                   "A crop smut threatens the planet’s agriculture, promising large-scale famine. A Friend finds evidence that a secret government research station in the system’s asteroid belt was conducting experiments in disease-resistant crop strains for the planet before the Silence struck and cut off communication with the station. The existing government considers it a wild goose chase, but the party might choose to help. The station has stasis-frozen samples of the crop sufficient to avert the famine, but it also has less pleasant relics....",
                   "A grasping Enemy in local government seizes the party’s ship for some trifling offense. The Enemy wants to end off world trade, and is trying to scare other traders away. The starship is held within a military cordon, and the Enemy is confident that by the time other elements of the government countermand the order, the free traders will have been spooked off .",
                   "A seemingly useless trinket purchased by a PC turns out to be the security key to a lost pretech facility. It was sold by accident by a bungling and now-dead minion of a local Enemy, who is hot after the party to “reclaim” his property... preferably after the party defeats whatever automatic defenses and bots the facility might still support."
-                 ]
+                ],
+  heights:       ["Very short", "Short", "Short", "Average height", "Average height", "Tall", "Tall", "Very tall"],
+  problems:      ["Grudge against local authorities.", "Has a secret kept from their family.", "Chronic illness.", "Enmity of a local psychic.", "Has enemies at work.", "Owes loan sharks.", "Threatened with loss of family.", "Close relative in trouble with the law.", "Drug or behavioral addict", "Blackmailed by enemy"],
+  jobMotivations:["Greed", "Idealistic about job", "Sense of social duty", "Force of habit", "Seeks to please another", "Feels inadequate otherwise", "Family tradition", "Religious obligation", "Nothing else, need money", "Want to get out", "It’s a stepping stone", "Spite against an enemy"],
+  quirks:        ["Bald", "Bad taste in clothing", "Very thin", "Powerful build", "Bad eyesight, wears specs", "Carries work tools constantly", "Long hair", "Bearded and/or Ankle-length", "Scars all over hands", "Missing digits or an ear", "Smells like their work", "Repeats himself constantly", "Talks about tabloid articles", "Booming voice", "Dislikes off worlders", "Always snuffling", "Missing teeth", "Fastidiously neat", "Wears religious emblems", "Speaks little"],
+
 };

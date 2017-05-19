@@ -1,0 +1,26 @@
+{
+  "name": "joshs-nerd-emporium",
+  "version": "1.0.0",
+  "description": "Pry usage examples",
+  "author": "Blaine Schmeisser",
+  "license": "MIT",
+  "dependencies": {
+    "pryjs": "file:../"
+  },
+  "devDependencies": {
+    "webpack": "^2.2.1"
+  },
+  "main": "NPCGenerator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshwcole/SWN.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joshwcole/SWN/issues"
+  },
+  "homepage": "https://github.com/joshwcole/SWN#readme"
+}
